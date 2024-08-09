@@ -75,6 +75,17 @@ const OverviewItem = styled.div`
 `;
 const Description = styled.p`
   margin: 20px 0px;
+  button {
+    border: 1px solid ${(props) => props.theme.textColor};
+    border-radius: 5px;
+    padding: 2px 5px;
+    color: ${(props) => props.theme.textColor};
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 12px;
+    display: absolute;
+    margin-left: 20px;
+  }
 `;
 
 const Tabs = styled.div`
@@ -198,6 +209,8 @@ function Coin({}: ICoinProps) {
   const setDarkAtom = useSetRecoilState(isDarkAtom);
   const isDark = useRecoilValue(isDarkAtom);
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
+  const [readMore, setReadMore] = useState(false);
+  const toggleReadMore = () => setReadMore((current) => !current);
 
   return (
     <Container>
@@ -248,7 +261,14 @@ function Coin({}: ICoinProps) {
               </span>
             </OverviewItem>
           </Overview>
-          <Description>{infoData?.description.ko}</Description>
+          <Description>
+            {readMore
+              ? infoData?.description.ko
+              : infoData?.description.ko.slice(0, 500) + "..."}
+            <button onClick={toggleReadMore}>
+              {readMore ? "전체 내용 접기" : "전체 내용 보기"}
+            </button>
+          </Description>
           <Overview>
             <OverviewItem>
               <span>Total Suply:</span>

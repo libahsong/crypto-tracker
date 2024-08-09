@@ -42,15 +42,15 @@ function Chart({ coinId }: IChartProps) {
             },
           ]}
           options={{
-            tooltip: {
-              enabled: true,
-              y: { formatter: (value) => `$${value.toFixed(2)}` },
-              x: {
-                show: true,
-                format: "dd MMM",
-                formatter: undefined,
-              },
-            },
+            // tooltip: {
+            //   enabled: true,
+            //   y: { formatter: (value) => `$${value.toFixed(2)}` },
+            //   x: {
+            //     show: true,
+            //     format: "dd MMM",
+            //     formatter: undefined,
+            //   },
+            // },
             theme: {
               mode: isDark ? "dark" : "light",
             },
