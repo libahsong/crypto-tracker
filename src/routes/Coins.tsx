@@ -34,6 +34,7 @@ const ButtonBox = styled.div`
     color: ${(props) => props.theme.textColor};
     background-color: transparent;
     cursor: pointer;
+    font-size: 12px;
   }
 `;
 const CoinList = styled.ul``;
@@ -90,12 +91,12 @@ function Coins({}: ICoinsProps) {
         <title>코인</title>
       </Helmet>
       <Header>
-        <Title>코인</Title>
         <ButtonBox>
           <button onClick={toggleDarkAtom}>
             {isDark ? "Light Mode" : "Dark Mode"}
           </button>
         </ButtonBox>
+        <Title>코인</Title>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>

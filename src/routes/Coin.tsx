@@ -14,6 +14,8 @@ import Chart from "./Chart";
 import { useQuery } from "react-query";
 import { fetchCoinInfo } from "../api";
 import { Helmet } from "react-helmet";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atom";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -36,6 +38,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   button {
     border: 0;
     background-color: transparent;
@@ -44,7 +47,20 @@ const Header = styled.header`
     cursor: pointer;
   }
 `;
-
+const ButtonBox = styled.div`
+  position: absolute;
+  right: -87px;
+  top: 40px;
+  button {
+    border: 1px solid ${(props) => props.theme.textColor};
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: ${(props) => props.theme.textColor};
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 12px;
+  }
+`;
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
@@ -179,6 +195,9 @@ function Coin({}: ICoinProps) {
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
   const history = useHistory();
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const isDark = useRecoilValue(isDarkAtom);
+  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
 
   return (
     <Container>
@@ -192,6 +211,11 @@ function Coin({}: ICoinProps) {
         </title>
       </Helmet>
       <Header>
+        <ButtonBox>
+          <button onClick={toggleDarkAtom}>
+            {isDark ? "Light Mode" : "Dark Mode"}
+          </button>
+        </ButtonBox>
         <button onClick={() => history.goBack()}>⬅</button>
         <Title>
           {state?.name
