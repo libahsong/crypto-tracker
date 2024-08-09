@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/crypto-tracker/static/js/main.617fbe24.js",
+    "static/js/453.c42d1384.chunk.js": "/crypto-tracker/static/js/453.c42d1384.chunk.js",
+    "index.html": "/crypto-tracker/index.html",
+    "main.617fbe24.js.map": "/crypto-tracker/static/js/main.617fbe24.js.map",
+    "453.c42d1384.chunk.js.map": "/crypto-tracker/static/js/453.c42d1384.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.617fbe24.js"
+  ]
+}
