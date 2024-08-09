@@ -8,10 +8,10 @@ function Router({}: IRouterProps) {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/crypto-tracker/:coinId">
+        <Route path="/:coinId">
           <Coin />
         </Route>
-        <Route path="/crypto-tracker/">
+        <Route path="/">
           <Coins />
         </Route>
       </Switch>
